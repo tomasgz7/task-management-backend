@@ -1,94 +1,65 @@
-# 📝 Tasks API – Spring Boot REST
+# Task Management Service - Spring Boot
 
-API REST básica para gestionar tareas.  
-Permite listar, crear, obtener por ID, actualizar y eliminar tareas.  
-Proyecto realizado para practicar backend real usando Java y Spring Boot con arquitectura organizada.
+REST API desarrollada para gestionar tareas mediante operaciones CRUD, diseñada con una arquitectura en capas que favorece la separación de responsabilidades y la mantenibilidad del sistema.
+
+El proyecto refleja buenas prácticas en la construcción de servicios backend, priorizando claridad estructural, trazabilidad de datos y una base preparada para evolucionar hacia escenarios más robustos.
+
+Este servicio fue concebido como una base estructural para comprender cómo diseñar APIs organizadas, priorizando legibilidad, desacople y facilidad de evolución en contextos reales de desarrollo.
+
 
 ---
 
-## 🚀 Tecnologías utilizadas
+## Arquitectura
+
+El servicio está organizado bajo un enfoque en capas:
+
+**Controller → Service → Repository**
+
+Esta estructura permite desacoplar la lógica de negocio del acceso a datos, facilitando la escalabilidad y futuras extensiones.
+
+---
+
+## Stack tecnológico
 
 - Java 17  
 - Spring Boot 3  
 - Spring Web  
 - Spring Data JPA  
-- H2 Database (en memoria)  
+- H2 Database  
 - Maven  
 
 ---
 
-## 📦 Modelo de datos (Task)
+## Modelo de dominio
 
-- id: número  
-- title: texto  
-- description: texto  
-- completed: boolean  
+**Task**
 
----
-
-## 🔗 Endpoints
-
-### Listar todas las tareas  
-`GET /api/tasks`
-
-### Obtener tarea por ID  
-`GET /api/tasks/{id}`
-
-### Crear tarea  
-`POST /api/tasks`  
-Body requerido:  
+- id  
 - title  
 - description  
 - completed  
 
-### Actualizar tarea  
-`PUT /api/tasks/{id}`  
-Body requerido:  
-- title  
-- description  
-- completed  
+---
 
-### Eliminar tarea  
-`DELETE /api/tasks/{id}`
+## Endpoints principales
+
+| Método | Endpoint | Descripción |
+|--------|------------|---------------|
+| GET | /api/tasks | Obtener todas las tareas |
+| GET | /api/tasks/{id} | Obtener tarea por ID |
+| POST | /api/tasks | Crear tarea |
+| PUT | /api/tasks/{id} | Actualizar tarea |
+| DELETE | /api/tasks/{id} | Eliminar tarea |
 
 ---
 
-## ▶️ Cómo ejecutar el proyecto
+## Enfoque
 
-1. Clonar el repositorio  
-2. Abrir el proyecto en tu IDE  
-3. Ejecutar con Maven:  
-   `mvn spring-boot:run`  
-4. La API estará disponible en:  
-   `http://localhost:8080/api/tasks`
+El objetivo principal fue construir un servicio backend priorizando organización interna, claridad en la lógica de negocio y una estructura preparada para escalar sin comprometer la mantenibilidad.
 
----
 
-## 🗄 Base de datos H2
+## Ejecución local
 
-Consola (si está habilitada):  
-`http://localhost:8080/h2-console`
-
----
-
-## 📌 Estado del proyecto
-
-- CRUD funcional  
-- Arquitectura limpia (Controller → Service → Repository)  
-- Respuestas y peticiones en JSON  
-- Base H2 temporal en memoria  
-- Ideal para portfolio como proyecto backend inicial  
-
----
-
-## 🧩 Mejoras futuras
-
-- DTOs  
-- Validaciones  
-- Manejo de errores  
-- Documentación con Swagger  
-- Tests unitarios  
-
----
-
-<p align="center"><i>Study Hard · Work Hard</i></p>
+```bash
+mvn spring-boot:run
+http://localhost:8080/api/tasks
